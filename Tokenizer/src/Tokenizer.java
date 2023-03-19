@@ -146,6 +146,7 @@ public class Tokenizer {
 
     public List<Token> tokenize(String input) throws Exception {
         List<Token> result = new LinkedList<Token>();
+        lastToken = null;
         int inputPos = 0;
 
 

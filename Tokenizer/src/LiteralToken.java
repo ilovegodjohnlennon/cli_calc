@@ -6,6 +6,10 @@ public class LiteralToken extends Token{
         value = value_;
     }
 
+    public double getValue(){
+        return value;
+    }
+
     @Override
     public String toString(){
         return "LITERAL_TOKEN: " + value;

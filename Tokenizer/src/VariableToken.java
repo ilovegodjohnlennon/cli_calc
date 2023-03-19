@@ -6,6 +6,10 @@ public class VariableToken extends Token{
         value = value_;
     }
 
+    public double getValue(){
+        return value;
+    }
+
     @Override
     public String toString(){
         return "VARIABLE_TOKEN: " + getName() + " : " + value;

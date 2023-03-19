@@ -13,6 +13,13 @@ public class InfixOperatorToken extends Token{
         priority = priority_;
     }
 
+    public int getPriority(){
+        return priority;
+    }
+    public BinaryOperator<Double> getOperator(){
+        return operator;
+    }
+
     @Override
     public String toString(){
         return "INFIX_OPERATOR_TOKEN: " + getName();

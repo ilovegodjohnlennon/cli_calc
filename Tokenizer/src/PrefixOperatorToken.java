@@ -8,6 +8,10 @@ public class PrefixOperatorToken extends Token{
         operator = operator_;
     }
 
+    public UnaryOperator<Double> getOperator(){
+        return operator;
+    }
+
     @Override
     public String toString(){
         return "PREFIX_OPERATOR_TOKEN: " + getName();

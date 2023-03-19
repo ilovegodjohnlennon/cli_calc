@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ExpressionTreeBuilder/ExpressionTreeBuilder.iml" filepath="$PROJECT_DIR$/ExpressionTreeBuilder/ExpressionTreeBuilder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tokenizer/Tokenizer.iml" filepath="$PROJECT_DIR$/Tokenizer/Tokenizer.iml" />
       <module fileurl="file://$PROJECT_DIR$/cli_calc.iml" filepath="$PROJECT_DIR$/cli_calc.iml" />
       <module fileurl="file://$PROJECT_DIR$/input/input.iml" filepath="$PROJECT_DIR$/input/input.iml" />
     </modules>
