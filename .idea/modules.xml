@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cli_calc.iml" filepath="$PROJECT_DIR$/cli_calc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/input/input.iml" filepath="$PROJECT_DIR$/input/input.iml" />
     </modules>
   </component>
 </project>
