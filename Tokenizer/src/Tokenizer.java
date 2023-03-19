@@ -170,8 +170,8 @@ public class Tokenizer {
         lastToken = null;
 
         // ====================== USEFUL CONSTANTS ============================
-        tokenMap.put("PI", new VariableToken("PI", 3.14159265));
-        tokenMap.put("E", new VariableToken("E", 2.718281828));
+        tokenMap.put("PI", new VariableToken("PI", Math.PI));
+        tokenMap.put("E", new VariableToken("E", Math.E));
 
         // ====================== INFIX OPERATORS  ============================
         tokenMap.put("+", new InfixOperatorToken("+", (x, y) -> x + y, 10));

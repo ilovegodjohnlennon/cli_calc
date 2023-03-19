@@ -4,32 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0093047-1af4-4a53-a9b9-e8449fe7dec0" name="Changes" comment="Implemented tokenizer">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/ExpressionTreeBuilder.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/VariableNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tokenizer/Tokenizer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tokenizer/src/Main.java" afterDir="false" />
+    <list default="true" id="d0093047-1af4-4a53-a9b9-e8449fe7dec0" name="Changes" comment="Implemented expression tree">
+      <change afterPath="$PROJECT_DIR$/Calculator/Calculator.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Calculator/src/Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Calculator/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/input.iml" beforeDir="false" afterPath="$PROJECT_DIR$/input/input.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/BinaryOperatorNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/BinaryOperatorNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/ClosingBracketToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/ClosingBracketToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/EmptyToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/EmptyToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/ExpressionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/ExpressionTreeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionTreeBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/InfixOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/InfixOperatorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/LiteralNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/LiteralNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/LiteralToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/LiteralToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/input/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/OpeningBracketToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/OpeningBracketToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/Pair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/PrefixOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/PrefixOperatorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/UnaryOperatorNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/UnaryOperatorNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/src/VariableToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/VariableToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +45,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main (2)">
+  <component name="RunManager" selected="Application.Main (3)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Tokenizer" />
@@ -79,6 +60,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Calculator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="input" />
@@ -88,6 +76,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
@@ -117,13 +106,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679225182419</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented expression tree">
+      <created>1679238840415</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679238840415</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="Implemented tokenizer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented tokenizer" />
+    <MESSAGE value="Implemented expression tree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented expression tree" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
