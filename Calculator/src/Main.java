@@ -16,6 +16,10 @@ public class Main {
         while(running){
             System.out.print(">>> ");
             input = scanner.nextLine();
+
+            if(input.isBlank()){
+                continue;
+            }
             if(input.equals("q")){
                 running = false;
                 break;
@@ -26,7 +30,7 @@ public class Main {
             }
             catch(Exception e){
                 System.out.println("ERROR!");
-                System.out.println(e.toString());
+                System.out.println(e.getMessage());
                 continue;
             }
 

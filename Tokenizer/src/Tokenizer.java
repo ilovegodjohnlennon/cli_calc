@@ -3,6 +3,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/*
+
+    Scanning the expression string into a list of tokens first probably isn't even necessary.
+    Should think about scanning into the tree right away -_-
+
+ */
+
+/*
+
+    Current algorithm for determining whether a '+' or '-' is unary or binary:
+        IF last token was either CLOSING_BRACKET, LITERAL or VARIABLE -> THEN binary
+        OTHERWISE, unary
+
+ */
+
 public class Tokenizer {
     private Map<String, Token> tokenMap;
     private Token lastToken;
@@ -14,6 +29,7 @@ public class Tokenizer {
         char c;
         Pair<Token, Integer> result = null;
 
+        // discard any whitespaces
         while(i < input.length()) {
             c = input.charAt(i);
             if (c != ' ') break;
@@ -21,21 +37,30 @@ public class Tokenizer {
         }
 
 
+        // check end of input string
         if(i >= input.length()){
             result = new Pair<Token, Integer>(new EmptyToken(), i);
             return result;
         }
+
+        // scan next character.
+        // use it to determine whether next token will be a literal or a name
         c = input.charAt(i);
 
         if(isValidTokenNameFirstChar(c)){
             result = nextNamedToken(input, i);
             return result;
         }
+        // if c is a digit, then next token is a literal
         if((c <= '9') && (c >= '0')){
             result = nextNumberLiteral(input, i);
             return result;
         }
 
+        // special case: tokens whose name is only 1 single char
+        // can scan them right from here using switch ^_^
+        //
+        // but first, move index to next char
         i++;
         switch(c){
             case '(':
@@ -78,7 +103,7 @@ public class Tokenizer {
 
 
 
-
+        // normally, function should have returned before this point
 
 
         throw new Exception("Encountered weird character at pos: " + i);
@@ -89,7 +114,8 @@ public class Tokenizer {
     // i.e. the token is a variable or function name
     private Pair<Token, Integer> nextNamedToken(String input, int startPos) throws Exception {
         int i = startPos;
-        String name = "";
+        // use StringBuilder instead of String because the IDE told me so -_-
+        StringBuilder name = new StringBuilder();
         char c;
 
         for( ; i < input.length(); i++){
@@ -97,14 +123,14 @@ public class Tokenizer {
             if(!isValidTokenNameChar(c)){
                 break;
             }
-            name += c;
+            name.append(c);
         }
 
-        if(!tokenMap.containsKey(name)){
+        if(!tokenMap.containsKey(name.toString())){
             throw new Exception("Symbol " + name + " does not exist!");
         }
 
-        return new Pair<Token, Integer>(tokenMap.get(name), i);
+        return new Pair<Token, Integer>(tokenMap.get(name.toString()), i);
     }
 
     // call from nextToken() if next char is a digit.
@@ -114,6 +140,8 @@ public class Tokenizer {
         double decimalPos = 0.1;
         char c;
 
+        // this is probably unnecessarily complicated -_-
+        // should have used Scanner.nextDouble or smth, idk
         for( ; i < input.length(); i++){
             c = input.charAt(i);
             if((c >= '0') && (c <= '9')){
@@ -143,7 +171,7 @@ public class Tokenizer {
 
 
 
-
+    // the only function that should be called from outside
     public List<Token> tokenize(String input) throws Exception {
         List<Token> result = new LinkedList<Token>();
         lastToken = null;

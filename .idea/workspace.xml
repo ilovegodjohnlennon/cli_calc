@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0093047-1af4-4a53-a9b9-e8449fe7dec0" name="Changes" comment="Implemented expression tree">
-      <change afterPath="$PROJECT_DIR$/Calculator/Calculator.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Calculator/src/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Calculator/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="d0093047-1af4-4a53-a9b9-e8449fe7dec0" name="Changes" comment="Added simple cli user interface.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionTreeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionTreeBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,14 +111,22 @@
       <option name="project" value="LOCAL" />
       <updated>1679238840415</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added simple cli user interface.">
+      <created>1679240996984</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679240996984</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="Implemented tokenizer" />
     <MESSAGE value="Implemented expression tree" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented expression tree" />
+    <MESSAGE value="Added simple cli user interface." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added simple cli user interface." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
