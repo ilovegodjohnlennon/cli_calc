@@ -9,6 +9,9 @@ public class VariableToken extends Token{
     public double getValue(){
         return value;
     }
+    public void setValue(double value_){
+        value = value_;
+    }
 
     @Override
     public String toString(){

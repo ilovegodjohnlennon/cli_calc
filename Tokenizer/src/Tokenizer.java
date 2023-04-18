@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.UnaryOperator;
 
 /*
 
@@ -193,13 +194,50 @@ public class Tokenizer {
         return result;
     }
 
+    public void setVariable(String name, double value){
+        if(!isValidTokenName(name)){
+            throw new IllegalArgumentException("Invalid variable name: " + name);
+        }
+
+        if(tokenMap.containsKey(name)){
+            Token t = tokenMap.get(name);
+
+            if(t instanceof VariableToken){
+                ((VariableToken) t).setValue(value);
+            }
+            else{
+                throw new IllegalArgumentException("Error! " + name + " is not a variable!");
+            }
+        }
+        else{
+            tokenMap.put(name, new VariableToken(name, value));
+        }
+    }
+
+    public void addFunction(String name, UnaryOperator<Double> function){
+        if(!isValidTokenName(name)){
+            throw new IllegalArgumentException("Invalid variable name: " + name);
+        }
+
+        if(tokenMap.containsKey(name)){
+            Token t = tokenMap.get(name);
+
+            if(t instanceof PrefixOperatorToken){
+                ((PrefixOperatorToken) t).setOperator(function);
+            }
+            else{
+                throw new IllegalArgumentException("Error! " + name + " already exists and is not a function!");
+            }
+        }
+        else{
+            tokenMap.put(name, new PrefixOperatorToken(name, function));
+        }
+    }
+
     public Tokenizer(){
         tokenMap = new HashMap<String, Token>();
         lastToken = null;
 
-        // ====================== USEFUL CONSTANTS ============================
-        tokenMap.put("PI", new VariableToken("PI", Math.PI));
-        tokenMap.put("E", new VariableToken("E", Math.E));
 
         // ====================== INFIX OPERATORS  ============================
         tokenMap.put("+", new InfixOperatorToken("+", (x, y) -> x + y, 10));
@@ -210,7 +248,6 @@ public class Tokenizer {
         // ====================== PREFIX OPERATORS ============================
         tokenMap.put("PREFIX_PLUS", new PrefixOperatorToken("PREFIX_PLUS", x -> x));
         tokenMap.put("PREFIX_MINUS", new PrefixOperatorToken("PREFIX_MINUS", x -> -x));
-        tokenMap.put("sin", new PrefixOperatorToken("sin", x -> Math.sin(x)));
     }
 
     // only latin alphabet, digits and underscores are valid in names
@@ -228,5 +265,16 @@ public class Tokenizer {
         boolean isUpper = c >= 'A' && c <= 'Z';
 
         return isLower || isUpper || (c == '_');
+    }
+
+    private static boolean isValidTokenName(String str){
+        if(str.isBlank()) return false;
+        if(!isValidTokenNameFirstChar(str.charAt(0))) return false;
+
+        for(int i = 1; i < str.length(); i++){
+            if(!isValidTokenNameChar(str.charAt(i))) return false;
+        }
+
+        return true;
     }
 }

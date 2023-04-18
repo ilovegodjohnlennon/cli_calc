@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0093047-1af4-4a53-a9b9-e8449fe7dec0" name="Changes" comment="Added simple cli user interface.">
+    <list default="true" id="d0093047-1af4-4a53-a9b9-e8449fe7dec0" name="Changes" comment="Added some comments.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/src/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator/src/Calculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Calculator/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionTreeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionTreeBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tokenizer/src/PrefixOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/PrefixOperatorToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tokenizer/src/VariableToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/VariableToken.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679240996984</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added some comments.">
+      <created>1679550063387</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679550063387</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -126,7 +135,19 @@
     <MESSAGE value="Implemented tokenizer" />
     <MESSAGE value="Implemented expression tree" />
     <MESSAGE value="Added simple cli user interface." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added simple cli user interface." />
+    <MESSAGE value="Added some comments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some comments." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionTreeBuilder.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

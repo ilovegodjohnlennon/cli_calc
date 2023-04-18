@@ -11,6 +11,9 @@ public class PrefixOperatorToken extends Token{
     public UnaryOperator<Double> getOperator(){
         return operator;
     }
+    public void setOperator(UnaryOperator<Double> op){
+        operator = op;
+    }
 
     @Override
     public String toString(){

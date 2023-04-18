@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) {
         boolean running = true;
         Calculator calculator = new Calculator();
-        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
         Scanner scanner = new Scanner(System.in);
         String input;
         double result;
@@ -15,7 +14,7 @@ public class Main {
 
         while(running){
             System.out.print(">>> ");
-            input = scanner.nextLine();
+            input = scanner.nextLine().trim();
 
             if(input.isBlank()){
                 continue;
@@ -25,16 +24,7 @@ public class Main {
                 break;
             }
 
-            try{
-                result = calculator.evaluateString(input);
-            }
-            catch(Exception e){
-                System.out.println("ERROR!");
-                System.out.println(e.getMessage());
-                continue;
-            }
-
-            System.out.println(decimalFormat.format(result));
+            calculator.doCommand(input);
 
         }
 
