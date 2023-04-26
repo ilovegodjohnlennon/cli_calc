@@ -6,10 +6,22 @@ import java.util.Stack;
 // should rewrite prettier
 public class ExpressionTreeBuilder {
 
+    // state of the expression tree builder
+    private Stack<Token> opStack;
+    private Stack<ExpressionNode> resultStack;
+
+    public ExpressionTreeBuilder(){
+        opStack = new Stack<>();
+        resultStack = new Stack<>();
+    }
+
+    public void resetState(){
+        opStack.clear();
+        resultStack.clear();
+    }
+
     // returns root of the tree
     public ExpressionNode buildExpressionTree(List<Token> tokens) throws Exception {
-        Stack<Token> opStack = new Stack<Token>();
-        Stack<ExpressionNode> resultStack = new Stack<ExpressionNode>();
 
         // go through the token list one by one
         for(Token currentToken: tokens){
@@ -84,64 +96,18 @@ public class ExpressionTreeBuilder {
                 continue;
             }
             if(currentToken instanceof ClosingBracketToken){
-                while(!opStack.isEmpty()){
-                    Token opToken = opStack.pop();
-                    if(opToken instanceof OpeningBracketToken){
-                        break;
-                    }
-                    if(opStack.isEmpty()){
-                        throw new Exception("No matching ( bracket!");
-                    }
-                    if(opToken instanceof PrefixOperatorToken){
-                        if(resultStack.isEmpty()){
-                            throw new Exception("Unary operator without argument: " + opToken.toString());
-                        }
-                        ExpressionNode arg = resultStack.pop();
-                        resultStack.push(new UnaryOperatorNode((PrefixOperatorToken) opToken, arg));
-                        continue;
-                    }
-                    if(opToken instanceof InfixOperatorToken){
-                        if(resultStack.size() < 2){
-                            throw new Exception("Not enough arguments for binary operator: " + opToken.toString());
-                        }
-                        ExpressionNode arg2 = resultStack.pop();
-                        ExpressionNode arg1 = resultStack.pop();
-                        resultStack.push(new BinaryOperatorNode((InfixOperatorToken) opToken, arg1, arg2));
-                        continue;
-                    }
 
-                }
+                collapseOpStack();
                 continue;
             }
 
         }
 
         // basically collapsing the stack after all tokens have been read from the input.
-        while(!opStack.isEmpty()){
-            Token opToken = opStack.pop();
+        collapseOpStack();
 
-            if(opToken instanceof PrefixOperatorToken){
-                if(resultStack.isEmpty()){
-                    throw new Exception("No argument for unary operator: " + opToken.toString());
-                }
-                ExpressionNode arg = resultStack.pop();
-                resultStack.push(new UnaryOperatorNode((PrefixOperatorToken) opToken, arg));
-                continue;
-            }
-            if(opToken instanceof InfixOperatorToken){
-                if(resultStack.size() < 2){
-                    throw new Exception("Not enough arguments for binary operator: " + opToken.toString());
-                }
-                ExpressionNode arg2 = resultStack.pop();
-                ExpressionNode arg1 = resultStack.pop();
-                resultStack.push(new BinaryOperatorNode((InfixOperatorToken) opToken, arg1, arg2));
-                continue;
-            }
-            if(opToken instanceof OpeningBracketToken){
-                throw new Exception("Error constructing tree! Found lonely opening bracket.");
-            }
-
-            throw new Exception("Error constructing tree! This token should not be in the opStack: " + opToken.toString());
+        if(!opStack.isEmpty()){
+            throw new IllegalStateException("Error! opStack is not empty at the end of constructing tree! Probably a mismatched bracket...");
         }
 
         // this should never happen because I'm catching blank strings in Main
@@ -150,6 +116,54 @@ public class ExpressionTreeBuilder {
         }
         return resultStack.pop();
     }
+
+    // just pop tokens from the opstack and immediately push them to result
+    // until opstack is empty or an opening bracket is encountered.
+    private void collapseOpStack() throws Exception {
+        while(!opStack.isEmpty()){
+            Token opToken = opStack.pop();
+
+            if(opToken instanceof OpeningBracketToken){
+                return;
+            }
+            else if(opToken instanceof PrefixOperatorToken){
+                pushPrefixToResult((PrefixOperatorToken) opToken);
+            }
+            else if(opToken instanceof InfixOperatorToken){
+                pushInfixToResult((InfixOperatorToken) opToken);
+            }
+            else{
+                throw new IllegalStateException("ERROR! Encountered weird token while collapting opStack: " + opToken.toString());
+            }
+
+
+        }
+    }
+
+    private void processInfixToken(InfixOperatorToken currentToken){
+
+    }
+
+    private void pushPrefixToResult(PrefixOperatorToken prefixToken) throws Exception {
+        if(resultStack.isEmpty()){
+            throw new Exception("No argument for unary operator: " + prefixToken.toString());
+        }
+
+        ExpressionNode arg = resultStack.pop();
+        resultStack.push(new UnaryOperatorNode(prefixToken, arg));
+    }
+
+    private void pushInfixToResult(InfixOperatorToken infixToken) throws Exception {
+        if(resultStack.size() < 2){
+            throw new Exception("Not enough arguments for binary operator: " + infixToken.toString());
+        }
+
+        ExpressionNode arg2 = resultStack.pop();
+        ExpressionNode arg1 = resultStack.pop();
+
+        resultStack.push(new BinaryOperatorNode(infixToken, arg1, arg2));
+    }
+
 
 
 
