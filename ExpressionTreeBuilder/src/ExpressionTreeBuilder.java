@@ -53,38 +53,8 @@ public class ExpressionTreeBuilder {
                         So far everything is left-associative.
                ===================================================== */
             if(currentToken instanceof InfixOperatorToken){
-                // if opStack is empty or has OPENING_BRACKET on top, just push currentToken on it.
-                if(opStack.isEmpty() || opStack.peek() instanceof OpeningBracketToken){
-                    opStack.push(currentToken);
-                    continue;
-                }
-
-
-                if(opStack.peek() instanceof PrefixOperatorToken){
-                    PrefixOperatorToken prefToken = (PrefixOperatorToken) opStack.pop();
-                    opStack.push(currentToken);
-                    if(resultStack.isEmpty()){
-                        throw new Exception("Unary operator without argument: " + prefToken.toString());
-                    }
-                    ExpressionNode arg = resultStack.pop();
-                    resultStack.push(new UnaryOperatorNode(prefToken, arg));
-                    continue;
-                }
-                if(opStack.peek() instanceof InfixOperatorToken){
-                    if(((InfixOperatorToken) currentToken).getPriority() > ((InfixOperatorToken) opStack.peek()).getPriority()){
-                        opStack.push(currentToken);
-                        continue;
-                    }
-                    InfixOperatorToken infixToken = (InfixOperatorToken) opStack.pop();
-                    opStack.push(currentToken);
-                    if(resultStack.size() < 2){
-                        throw new Exception("Not enough arguments for binary operator: " + infixToken.toString());
-                    }
-                    ExpressionNode arg2 = resultStack.pop();
-                    ExpressionNode arg1 = resultStack.pop();
-                    resultStack.push(new BinaryOperatorNode(infixToken, arg1, arg2));
-                    continue;
-                }
+                processInfixToken((InfixOperatorToken) currentToken);
+                continue;
             }
             // prefix op. always has higher priority, so we push it. easy.
             if(currentToken instanceof PrefixOperatorToken){
@@ -140,7 +110,28 @@ public class ExpressionTreeBuilder {
         }
     }
 
-    private void processInfixToken(InfixOperatorToken currentToken){
+    private void processInfixToken(InfixOperatorToken currentToken) throws Exception {
+        if(opStack.isEmpty() || opStack.peek() instanceof OpeningBracketToken){
+            opStack.push(currentToken);
+            return;
+        }
+
+        // need to pop all the operators that have greater precedence!!
+        while(!opStack.isEmpty()){
+            Token tok = opStack.peek();
+
+            if(tok instanceof PrefixOperatorToken){
+                pushPrefixToResult((PrefixOperatorToken) opStack.pop());
+            }
+            else if(tok instanceof InfixOperatorToken && ((InfixOperatorToken) tok).getPriority() > currentToken.getPriority()){
+                pushInfixToResult((InfixOperatorToken)opStack.pop());
+            }
+            else{
+                break;
+            }
+        }
+
+        opStack.push(currentToken);
 
     }
 
