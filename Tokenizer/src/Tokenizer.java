@@ -240,10 +240,10 @@ public class Tokenizer {
 
 
         // ====================== INFIX OPERATORS  ============================
-        tokenMap.put("+", new InfixOperatorToken("+", (x, y) -> x + y, 10));
-        tokenMap.put("-", new InfixOperatorToken("-", (x, y) -> x - y, 10));
-        tokenMap.put("*", new InfixOperatorToken("*", (x, y) -> x * y, 20));
-        tokenMap.put("/", new InfixOperatorToken("/", (x, y) -> x / y, 20));
+        tokenMap.put("+", new InfixOperatorToken("+", (x, y) -> x + y, 10, true));
+        tokenMap.put("-", new InfixOperatorToken("-", (x, y) -> x - y, 10, true));
+        tokenMap.put("*", new InfixOperatorToken("*", (x, y) -> x * y, 20, true));
+        tokenMap.put("/", new InfixOperatorToken("/", (x, y) -> x / y, 20, true ));
 
         // ====================== PREFIX OPERATORS ============================
         tokenMap.put("PREFIX_PLUS", new PrefixOperatorToken("PREFIX_PLUS", x -> x));

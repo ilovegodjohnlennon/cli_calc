@@ -6,15 +6,20 @@ import java.util.function.BinaryOperator;
 public class InfixOperatorToken extends Token{
     private BinaryOperator<Double> operator;
     private int priority;
+    private boolean leftAssociative;
 
-    public InfixOperatorToken(String name_, BinaryOperator<Double> operator_, int priority_){
+    public InfixOperatorToken(String name_, BinaryOperator<Double> operator_, int priority_, boolean isLeftAssociative){
         super(name_);
         operator = operator_;
         priority = priority_;
+        leftAssociative = isLeftAssociative;
     }
 
     public int getPriority(){
         return priority;
+    }
+    public boolean isLeftAssociative(){
+        return leftAssociative;
     }
     public BinaryOperator<Double> getOperator(){
         return operator;

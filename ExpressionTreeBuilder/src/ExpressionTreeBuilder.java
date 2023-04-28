@@ -127,8 +127,18 @@ public class ExpressionTreeBuilder {
             if(tok instanceof PrefixOperatorToken){
                 pushPrefixToResult((PrefixOperatorToken) opStack.pop());
             }
-            else if(tok instanceof InfixOperatorToken && ((InfixOperatorToken) tok).getPriority() > currentToken.getPriority()){
-                pushInfixToResult((InfixOperatorToken)opStack.pop());
+            else if(tok instanceof InfixOperatorToken){
+                boolean canPop;
+
+                canPop = ((InfixOperatorToken) tok).getPriority() > currentToken.getPriority();
+                canPop = canPop || (((InfixOperatorToken) tok).getPriority() == currentToken.getPriority() && ((InfixOperatorToken) tok).isLeftAssociative());
+
+                if(canPop) {
+                    pushInfixToResult((InfixOperatorToken)opStack.pop());
+                }
+                else{
+                    break;
+                }
             }
             else{
                 break;
