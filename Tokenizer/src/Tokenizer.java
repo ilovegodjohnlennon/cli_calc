@@ -216,7 +216,7 @@ public class Tokenizer {
 
     public void addFunction(String name, UnaryOperator<Double> function){
         if(!isValidTokenName(name)){
-            throw new IllegalArgumentException("Invalid variable name: " + name);
+            throw new IllegalArgumentException("Invalid function name: " + name);
         }
 
         if(tokenMap.containsKey(name)){

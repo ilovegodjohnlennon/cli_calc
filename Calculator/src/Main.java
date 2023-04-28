@@ -3,30 +3,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        boolean running = true;
         Calculator calculator = new Calculator();
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        double result;
 
-        System.out.println("==== Welcome to the calculator! ====");
-        System.out.println("Enter expression to evaluate or 'q' to quit\n\n");
+        calculator
+                .setVariable("PI"  , Math.PI   )
+                .setVariable("E"   , Math.E    )
 
-        while(running){
-            System.out.print(">>> ");
-            input = scanner.nextLine().trim();
+                .setFunction("sin" , Math::sin )
+                .setFunction("cos" , Math::cos )
+                .setFunction("tan" , Math::tan )
+                .setFunction("sqrt", Math::sqrt)
+                .setFunction("ln"  , Math::log )
+                .setFunction("exp" , Math::exp )
 
-            if(input.isBlank()){
-                continue;
-            }
-            if(input.equals("q")){
-                running = false;
-                break;
-            }
+                .run();
 
-            calculator.doCommand(input);
-
-        }
 
         System.out.println("\n\nGoodbye!");
     }

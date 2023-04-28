@@ -1,23 +1,30 @@
 import java.util.List;
+import java.util.Scanner;
+import java.util.function.UnaryOperator;
 
 public class Calculator {
     private Tokenizer tokenizer;
     private ExpressionTreeBuilder treeBuilder;
+    private Scanner scanner;
+    private boolean running;
 
     public Calculator(){
         tokenizer = new Tokenizer();
         treeBuilder = new ExpressionTreeBuilder();
+        scanner = new Scanner(System.in);
 
-        setVariable("PI", Math.PI);
-        setVariable("E", Math.E);
-
-        tokenizer.addFunction("sin", Math::sin);
-        tokenizer.addFunction("cos", Math::cos);
-        tokenizer.addFunction("ln", Math::log);
+        running = true;
     }
 
     public void doCommand(String command){
-        if(command.startsWith("set")){ // ==================================
+        if(command.isBlank()){
+            return;
+        }
+        else if(command.equals("q")){
+            running = false;
+            return;
+        }
+        else if(command.startsWith("set")){ // ==================================
             String assignment = command.substring(3).trim();
             if(assignment.contains("=")){
                 int eqPos = assignment.indexOf("=");
@@ -84,12 +91,37 @@ public class Calculator {
         }
     }
 
-    private void setVariable(String name, double value){
+    public Calculator setVariable(String name, double value){
         try{
             tokenizer.setVariable(name, value);
         }
         catch(Exception e){
             System.out.println(e.getMessage());
+        }
+
+        return this;
+    }
+
+    public Calculator setFunction(String name, UnaryOperator<Double> function){
+        try{
+            tokenizer.addFunction(name, function);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return this;
+    }
+
+
+    public void run(){
+        String input;
+
+        while(running){
+            System.out.print(">>> ");
+
+            input = scanner.nextLine().trim();
+            doCommand(input);
         }
     }
 }
