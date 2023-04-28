@@ -22,6 +22,7 @@ public class ExpressionTreeBuilder {
 
     // returns root of the tree
     public ExpressionNode buildExpressionTree(List<Token> tokens) throws Exception {
+        resetState();
 
         // go through the token list one by one
         for(Token currentToken: tokens){
@@ -83,6 +84,9 @@ public class ExpressionTreeBuilder {
         // this should never happen because I'm catching blank strings in Main
         if(resultStack.isEmpty()){
             throw new Exception("Expression is empty!");
+        }
+        if(resultStack.size() > 1){
+            throw new Exception("Something wrong, i can feel it..");
         }
         return resultStack.pop();
     }
