@@ -6,12 +6,14 @@ public class Calculator {
     private Tokenizer tokenizer;
     private ExpressionTreeBuilder treeBuilder;
     private Scanner scanner;
+    private UserHelper helper;
     private boolean running;
 
     public Calculator(){
         tokenizer = new Tokenizer();
         treeBuilder = new ExpressionTreeBuilder();
         scanner = new Scanner(System.in);
+        helper = new UserHelper();
 
         running = true;
     }
@@ -23,6 +25,15 @@ public class Calculator {
         else if(command.equals("q")){
             running = false;
             return;
+        }
+        else if(command.startsWith("help")){
+            String query = command.substring(4).trim();
+            if(query.isBlank()){
+                helper.genericHelp();
+                return;
+            }
+
+            helper.showEntry(query);
         }
         else if(command.startsWith("set")){ // ==================================
             String assignment = command.substring(3).trim();
@@ -116,6 +127,8 @@ public class Calculator {
 
     public void run(){
         String input;
+
+        helper.greet();
 
         while(running){
             System.out.print(">>> ");

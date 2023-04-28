@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0093047-1af4-4a53-a9b9-e8449fe7dec0" name="Changes" comment="Finishing touches. v1.0 complete!">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Calculator_jar.xml" afterDir="false" />
+    <list default="true" id="d0093047-1af4-4a53-a9b9-e8449fe7dec0" name="Changes" comment="Fixed the associativity problem...">
+      <change afterPath="$PROJECT_DIR$/Calculator/src/HelpEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Calculator/src/UserHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionTreeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionTreeBuilder/src/ExpressionTreeBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tokenizer/src/InfixOperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/InfixOperatorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer/src/Tokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Calculator/src/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator/src/Calculator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682694684679</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed the associativity problem...">
+      <created>1682709248168</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1682709248168</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -183,7 +189,8 @@
     <MESSAGE value="Finished tidying up the tree builder!" />
     <MESSAGE value="Tidied up the Calculator class a little.. Main now looks prettier." />
     <MESSAGE value="Finishing touches. v1.0 complete!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finishing touches. v1.0 complete!" />
+    <MESSAGE value="Fixed the associativity problem..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the associativity problem..." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
